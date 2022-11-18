@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>Step03_Scope</display-name>
+
+	<!-- /Step03_Scope/ 라고 요청 했을때 경로(최상위) 요청을 했을 때 응답할 페이지 목록 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 서블릿이 어디 있는지 알리면서 이름 부여하기 (서블릿 정의)-->
+	<servlet>
+		<servlet-name>saveServlet</servlet-name><!-- 서블릿 이름 부여하기 -->
+		<servlet-class>test.servlet.SaveServlet</servlet-class><!-- 서블릿 어디있는지 알려주기(위치) / 여기서 처리해라~ -->
+	</servlet>
+	
+	<!-- 어떤 이름의 서블릿이 어떤 패턴의 요청을 처리할 지 지정하기(서블릿 맵핑) -->
+	<servlet-mapping>
+		<servlet-name>saveServlet</servlet-name>
+		<url-pattern>/test/save</url-pattern><!-- 어떤 패턴의 요청을 처리할 지 지정 -->
+	</servlet-mapping>
+
+</web-app>
