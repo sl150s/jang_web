@@ -3,6 +3,7 @@
 <%
 	//session scope에 id라는 키값으로 저장된 값이 있는지 읽어와 본다(없으면 null)
 	String id = (String)session.getAttribute("id");
+	
 %>
 <!DOCTYPE html>
 <html>
