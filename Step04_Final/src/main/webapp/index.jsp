@@ -16,7 +16,7 @@
       <h1>인덱스 페이지 입니다.</h1>
       <%if(id!=null){ %>
       	<p>
-	      	<strong><%=id %>님 환영합니다.</strong>
+	      	<a href="${pageContext.request.contextPath}/users/private/info.jsp"><%=id %></a>
 	      	<a href="${pageContext.request.contextPath}/users/logout.jsp">로그아웃</a>
       	</p>
       <%}else{%>
@@ -26,6 +26,7 @@
          <li><a href="${pageContext.request.contextPath }/users/signup_form.jsp">회원가입</a></li>
          <li><a href="${pageContext.request.contextPath}/private/study.jsp">회원전용공간(공부)</a></li>
          <li><a href="${pageContext.request.contextPath}/private/game.jsp">회원전용공간(게임)</a></li>
+         <li><a href="file/list.jsp">자료실</a></li>
       </ul>
    </div>
 </body>
