@@ -54,11 +54,14 @@ UsersDto dto = UsersDao.getInstance().getData(id);
 			<button type="reset">취소</button>
 		</form>
 		
+		
+		
 		<form id="imageForm" action="profile_upload.jsp" method="post" enctype="multipart/form-data">
 			프로필 사진
 			<input type="file" id="image" name="image" accept=".jpg, .png, .gif" />
 			<button type="submit">업로드</button>
 		</form>
+		
 		
 	</div>
 	
