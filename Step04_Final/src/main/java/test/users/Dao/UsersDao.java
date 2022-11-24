@@ -201,7 +201,7 @@ public class UsersDao {
 	}
 	
 	
-	//개인정보(이메일)을 수정하는 메소드
+	//개인정보(이메일,프로필사진)을 수정하는 메소드
 	public boolean update(UsersDto dto) {
 		int rowCount = 0;
 		//필요한 객체를 담을 지역변수를 미리 만들어둔다. 
@@ -213,13 +213,14 @@ public class UsersDao {
 
 			//실행할 sql문의 뼈대 구성하기
 			String sql = "UPDATE users"
-					+ " SET email =?"
+					+ " SET email =?, profile =?"
 					+ " WHERE id =?";
 
 			pstmt = conn.prepareStatement(sql);
 			//?에 바인딩 할게 있으면 한다. 
 			pstmt.setString(1, dto.getEmail());
-			pstmt.setString(2, dto.getId());
+			pstmt.setString(2, dto.getProfile());
+			pstmt.setString(3, dto.getId());
 
 			//INSERT OR UPDATE OR DELETE 문을 수행하고 수정되거나, 삭제되거나, 추가된 row의 갯수 리턴받기
 			rowCount = pstmt.executeUpdate();//업데이트된 rowCount가 리턴 (숫자)
