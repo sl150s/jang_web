@@ -33,6 +33,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/private/pwd_update.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
 	<script>

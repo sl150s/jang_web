@@ -13,6 +13,7 @@ UsersDto dto = UsersDao.getInstance().getData(id);
 <head>
 <meta charset="UTF-8">
 <title>/users/private/updateform.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 <style>
    /* 이미지 업로드 폼을 숨긴다 */
    #imageForm{

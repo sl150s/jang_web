@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/private/insertform.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 <style>
 	textarea{
 		width:768px;

@@ -24,6 +24,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
 	<%if(isSuccess) {%>

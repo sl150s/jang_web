@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/file/private/upload_form.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
 	<div class="container">

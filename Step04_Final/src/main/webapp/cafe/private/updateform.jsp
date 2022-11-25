@@ -14,6 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 <style>
 	textarea{
 		width:500px;

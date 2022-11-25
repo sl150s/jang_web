@@ -11,6 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/logout.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
 	
