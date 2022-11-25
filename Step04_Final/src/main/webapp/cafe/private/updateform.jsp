@@ -1,30 +1,44 @@
+<%@page import="test.cafe.dto.CafeDto"%>
+<%@page import="test.cafe.dao.CafeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%
+	// 수정할 글의 넘버 가져오기 
+	int num = Integer.parseInt(request.getParameter("num"));
+
+	//DB에서 해당 글의 정보 가져오기
+	CafeDto dto = CafeDao.getInstance().getDate(num);
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/cafe/private/insertform.jsp</title>
+<title>Insert title here</title>
 <style>
 	textarea{
-		width:768px;
+		width:500px;
 		height:300px;
 	}
 </style>
 </head>
 <body>
 	<div class="container">
-		<h3>새글 작성 폼입니다.</h3>
-		<form action="insert.jsp" method="post">
+		<h3>글 수정 양식입니다.</h3>
+		<form action="update.jsp" method="post">
+			<!-- 수정 반영 할 때 글 번호도 필요하기 때문에 input type="hidden"으로 전송되도록 한다 -->
+			<input type="hidden" name="num" value="<%=dto.getNum() %>" />
 			<div>
 				<label for="title">제목</label>
-				<input type="text" name="title" id="title"/>
+				<input type="text" name="title" id="title" value="<%=dto.getTitle()%>"/>
 			</div>
 			<div>
 				<label for="content">내용</label>
-				<textarea name="content" id="content" rows="10"></textarea>
+				<textarea name="content" id="content" rows="10"><%=dto.getContent()%></textarea>
 			</div>
-			<button type="submit" onclick="submitContents(this)">저장</button>
+			<button type="submit" onclick="submitContents(this)">수정확인</button>
+			<button type="reset">취소</button>
+			
+			
 		</form>
 	</div>
 	   <%--

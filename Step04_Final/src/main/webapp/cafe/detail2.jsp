@@ -8,9 +8,6 @@
 
 	//DB에서 해당글의 정보를 얻어오서
 	CafeDto dto = CafeDao.getInstance().getDate(num);
-	
-	//글 조회수도 1 증가 시킨다.
-	CafeDao.getInstance().addViewCount(num);
 	//응답한다 
 %>
 <!DOCTYPE html>
@@ -50,22 +47,12 @@
 				2. <pre></pre> 요소 안에 출력하기
 				3. 개행 기호를 찾아서 <br>로 대체하기
 			 --%>
-			<!-- 1. textarea에 출력하기 -->
 			<tr>
-				<th>내용</th>
-				<td>
-					<textarea name="" id="" rows="10" readonly><%=dto.getContent() %></textarea>
-				</td>
-			</tr>
-			<!-- 2. <pre></pre> 요소 안에 출력하기 -->
-			<tr>
-				<th>내용</th>
-				<td>
-					<pre><%=dto.getContent() %></pre>
+				<td colspan="2">
+					<div><%=dto.getContent() %></div>
 				</td>
 			</tr>
 		</table>
-		
 		<%
 			//로그인된 아이디가 있으면 읽어온다(null일 수도 있따. )
 			String id = (String)session.getAttribute("id");
@@ -78,7 +65,7 @@
 				function deleteConfirm(){
 					const isDelete=confirm("이 글을 삭제 하겠습니까?");
 					if(isDelete){
-						location.href="private/delete.jsp?num=<%=dto.getNum()%>"
+						location.href="private/delete.jsp?num=<%=dto.getNum()%>";
 					}
 				}
 			</script>
