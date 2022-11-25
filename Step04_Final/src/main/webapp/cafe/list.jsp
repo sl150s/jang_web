@@ -59,6 +59,7 @@
 <jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
+	<jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="container">
 		<a href="${pageContext.request.contextPath}/cafe/private/insertform.jsp">새 글 작성</a>
 		<h3>카페 글 목록입니다.</h3>

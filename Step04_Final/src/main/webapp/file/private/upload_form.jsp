@@ -8,6 +8,7 @@
 <jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
+	<jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="container">
 		<h3>파일 업로드 폼입니다.</h3>
 		<!-- 

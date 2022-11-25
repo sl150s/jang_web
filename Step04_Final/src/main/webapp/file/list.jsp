@@ -63,6 +63,7 @@
 <jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
+	<jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="container">
 		<a href="${pageContext.request.contextPath}/file/private/upload_form.jsp" class="btn btn-dark">
 			업로드 하기

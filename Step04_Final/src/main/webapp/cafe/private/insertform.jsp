@@ -14,6 +14,7 @@
 </style>
 </head>
 <body>
+	<jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="container">
 		<h3>새글 작성 폼입니다.</h3>
 		<form action="insert.jsp" method="post">

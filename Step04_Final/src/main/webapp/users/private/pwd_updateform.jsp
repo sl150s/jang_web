@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <title>/users/private/pwd_updateform.jsp</title>
 <jsp:include page="/include/boot.jsp"></jsp:include>
+
 </head>
 <body>
+	<jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="container">
 		<h1>비밀번호 수정 폼</h1>
 		<form action="pwd_update.jsp" method="post" id="myForm">
