@@ -7,7 +7,7 @@
 <header>
 	<nav class="navbar navbar-dark bg-dark fixed-top">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Jang-page</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">Jang-page</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
 				aria-controls="offcanvasDarkNavbar">
@@ -26,9 +26,9 @@
 							aria-current="page"
 							href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="dropdown-item"
-							href="cafe/list.jsp">글목록</a></li>
+							href="${pageContext.request.contextPath}/cafe/list.jsp">글목록</a></li>
 						<li class="nav-item"><a class="dropdown-item"
-							href="file/list.jsp">자료실</a></li>
+							href="${pageContext.request.contextPath}/file/list.jsp">자료실</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false"> 회원전용공간 </a>
@@ -67,3 +67,6 @@
 		</div>
 	</nav>
 </header>
+<div class="body_container">
+
+

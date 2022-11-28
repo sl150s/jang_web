@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/private/game.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
