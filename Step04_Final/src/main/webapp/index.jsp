@@ -119,7 +119,7 @@
 						class="img-fluid"
 						src="https://img.freepik.com/free-photo/blurred-cheonjiyeon-waterfall-is-a-waterfall-on-jeju-island-sou_1258-713.jpg?w=1380&t=st=1669600594~exp=1669601194~hmac=ed61f79a9bd5a0e496dbe70b81cd5297c47a87ad56d6714ee8be1255ee531621"
 						alt="풀이미지" /> </a></li>
-				<li class="col-lg-3 col-md-4 col-sm-6"><a href="#"> <img
+				<li class="col-lg-3 col-sm-4"><a href="#"> <img
 						class="img-fluid"
 						src="https://img.freepik.com/free-photo/water-droplet-on-a-green-leaf-background_53876-104392.jpg?w=1380&t=st=1669600628~exp=1669601228~hmac=2254c625cb04c6d24c285dbfdd8491eab8310629b92a2d7e1ecb2296035d7750"
 						alt="풀이미지" />

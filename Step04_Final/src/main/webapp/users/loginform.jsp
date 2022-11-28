@@ -35,13 +35,13 @@ if (url == null) {
 									<div class="form-outline form-white mb-4">
 										<input type="text" id="id" name="id"
 											class="form-control form-control-lg" placeholder="아이디" /> <label
-											class="form-label" for="id"></label>
+											class="form-label sr-only" for="id">아이디</label>
 									</div>
 
 									<div class="form-outline form-white mb-4">
 										<input type="password" id="pwd" name="pwd"
 											class="form-control form-control-lg" placeholder="비밀번호" /> <label
-											class="form-label" for="pwd"></label>
+											class="form-label sr-only" for="pwd">비밀번호</label>
 									</div>
 									<button class="btn btn-outline-light btn-lg px-5" type="submit">로그인</button>
 								</form>
