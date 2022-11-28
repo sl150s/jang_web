@@ -27,6 +27,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/private/insert.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
 	<div class="container">

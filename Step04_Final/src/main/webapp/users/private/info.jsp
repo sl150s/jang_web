@@ -14,6 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/private/info.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 <style>
    #profileImage{
       width: 100px;

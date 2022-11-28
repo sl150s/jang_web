@@ -15,6 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/detail.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
 	<div class="container">

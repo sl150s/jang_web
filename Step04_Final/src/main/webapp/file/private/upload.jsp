@@ -50,6 +50,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/file/private/upload.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
 	<%if(isSuccess){ %>

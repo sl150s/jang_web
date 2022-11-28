@@ -18,8 +18,10 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/detail.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
+	<jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="container">
 		<h3>글 상세보기</h3>
 		<table>

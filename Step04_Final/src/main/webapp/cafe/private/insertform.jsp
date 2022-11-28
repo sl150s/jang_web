@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/private/insertform.jsp</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 <style>
 	textarea{
 		width:768px;
@@ -13,6 +14,7 @@
 </style>
 </head>
 <body>
+	<jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="container">
 		<h3>새글 작성 폼입니다.</h3>
 		<form action="insert.jsp" method="post">

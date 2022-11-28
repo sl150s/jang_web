@@ -14,6 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="/include/boot.jsp"></jsp:include>
 <style>
 	textarea{
 		width:500px;
@@ -22,6 +23,7 @@
 </style>
 </head>
 <body>
+	<jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="container">
 		<h3>글 수정 양식입니다.</h3>
 		<form action="update.jsp" method="post">
