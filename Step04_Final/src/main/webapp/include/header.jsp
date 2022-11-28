@@ -26,7 +26,7 @@
 							aria-current="page"
 							href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
 						<li class="nav-item"><a class="dropdown-item"
-							href="${pageContext.request.contextPath}/cafe/list.jsp">글목록</a></li>
+							href="${pageContext.request.contextPath}/cafe/list.jsp">문의게시판</a></li>
 						<li class="nav-item"><a class="dropdown-item"
 							href="${pageContext.request.contextPath}/file/list.jsp">자료실</a></li>
 						<li class="nav-item dropdown"><a
@@ -34,9 +34,9 @@
 							data-bs-toggle="dropdown" aria-expanded="false"> 회원전용공간 </a>
 							<ul class="dropdown-menu dropdown-menu-dark">
 								<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/private/study.jsp">공부페이지</a></li>
+									href="${pageContext.request.contextPath}/private/study.jsp">공부공간</a></li>
 								<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/private/game.jsp">게임페이지</a></li>
+									href="${pageContext.request.contextPath}/private/game.jsp">놀이공간</a></li>
 
 							</ul></li>
 					</ul>
