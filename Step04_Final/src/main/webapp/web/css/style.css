@@ -2,10 +2,19 @@
 
 
 .body_container {margin-top:56px;}
-.section {margin-top:3rem; margin-bottom:3rem; }
+.section {margin-top:3rem; }
 .sec-t-font {font-weight:600; margin-bottom:1rem;}
-a{color: inherit;
-  text-decoration: none;}
+a{color: inherit;text-decoration: none;}
+.sr-only {
+	position: absolute;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	border: 0;
+	clip: rect(0,0,0,0);
+}
 
 /*main*/
 .visual{padding-right:0; padding-left:0;}
@@ -13,7 +22,19 @@ a{color: inherit;
 .index-list li svg {width:50%}
 .index-list li p {font-size:1.2rem; font-weight:bold;}
 .con2-sec ul li {margin-bottom:1rem;}
+.con3-sec p{margin-bottom:0}
 
+/*login-form*/
+.gradient-custom {
+/* fallback for old browsers */
+background: #ddd;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
 
 /* footer*/
 .footer .icon_btn {
