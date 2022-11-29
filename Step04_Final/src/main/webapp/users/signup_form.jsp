@@ -81,7 +81,9 @@
 			</div>
 		</div>
 	</section>
-	<!-- Section: Design Block -->
+	
+	
+	
 
 	<script>
 		//유효성 여부를 저장할 변수를 만들고 초기값 대입 - 값을 다르게 넣을 수 있기 때문에 변수 let을 쓴다
@@ -90,7 +92,6 @@
 		let isEmailValid=false;
 	
 		document.querySelector("#email").addEventListener("input", function() {
-
 			this.classList.remove("is-valid");
 			this.classList.remove("is-invalid");
 			//입력한 이메일
@@ -151,13 +152,9 @@
 				//3. 사용가능한지 여부에 따라 아이디 입력란에 is-valid or is-invalid 클래스를 적절히 추가, 제거를 한다.
 				console.log(data);
 				if (data.isExist) {
-					//document.querySelector("#id").classList.romove("is-valid");
-					//document.querySelector("#id").classList.add("is-invalid");
 					self.classList.add("is-invalid");
 					isIdValid=fasle;
 				} else {
-					//document.querySelector("#id").classList.reomove("is-invalid");
-					//document.querySelector("#id").classList.add("is-valid");
 					self.classList.add("is-valid");
 					isIdValid=true;
 
