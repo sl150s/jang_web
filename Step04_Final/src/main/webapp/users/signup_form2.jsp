@@ -28,7 +28,6 @@
 								<input type="text" id="id" name="id" class="form-control"
 									placeholder="아이디" /> <label class="form-label sr-only"
 									for="id">아이디</label>
-								<small class="form-text text-muted">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요</small>
 								<div class="valid-feedback">사용할 수 있습니다.</div>
 								<div class="invalid-feedback">사용할 수 없는 아이디입니다.</div>
 							</div>
@@ -38,7 +37,6 @@
 								<input type="password" id="pwd" name="pwd" class="form-control"
 									placeholder="비밀번호" /> <label class="form-label sr-only"
 									for="pwd">비밀번호</label>
-								<small class="form-text text-muted">특수문자를 하나이상 조합하세요.</small>
 								<div class="invalid-feedback">비밀번호를 확인하세요</div>
 							</div>
 
@@ -86,135 +84,114 @@
 	
 	
 	
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script>
 		//유효성 여부를 저장할 변수를 만들고 초기값 대입 - 값을 다르게 넣을 수 있기 때문에 변수 let을 쓴다
 		let isIdValid=false;
 		let isPwdValid=false;
 		let isEmailValid=false;
 		
-	
-		document.querySelector("#email").addEventListener("input", function() {
-			document.querySelector("#email").classList.remove("is-valid");
-			document.querySelector("#email").classList.remove("is-invalid");
-			
-			const inputEmail = document.querySelector("#email").value;
-			//이메일을 검증할 정규 표현식===========================
-			const reg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
+		//아래의 코드를 jQuery를 홀용한 구조로 변경해보세요
+		
+		//id가 email인 요소에 input 이벤트가 일어 났을 때 실행할 함수 등록
+		$("#email").on("input",function(){
+			//두개의 클래스 제거하기 
+			$(this).removeClass("is-valid is-invalid"); 
+			//입력한 이메일
+			const inputEmail = $(this).val();
+			//이메일을 검증할 정규 표현식  
+			const reg = /@/; //골뱅이가 포함되어있는지 
 			if(!reg.test(inputEmail)){
-				document.querySelector("#email").classList.add("is-invalid");
-				isEmailValid=false;
+				$(this).addClass("is-inval");
+				isEmailValid=fasle;
 			}else{
-				document.querySelector("#email").classList.add("is-valid");
+				$(this).addClass("is-valid");
 				isEmailValid=true;
 			}
 		});
 
-		
-		
-		
 
 		function checkPwd() {
 			//먼저 2개의 클래스를 제거하고 
-			document.querySelector("#pwd").classList.remove("is-valid");
-			document.querySelector("#pwd").classList.remove("is-invalid");
+			$("#pwd").removeClass("is-valid is-invalid");
 
-			//입력한 두 개의 비밀번호를 일겅와서
-			const pwd = document.querySelector("#pwd").value;
-			const pwd2 = document.querySelector("#pwd2").value;
+			//입력한 두 개의 비밀번호를 읽어와서
+			const pwd = $("#pwd").val;
+			const pwd2 = $("#pwd2").val;
 			
-			//비밀번호를 검증할 정규 표현식============================
-			const pwdReg = /[\W]/; 
-			//만일 정규 표현식 검증을 통화하지 못했다면 
-			const isPwdReg = pwdReg.test(pwd); 
-			if(!isPwdReg){
-				document.querySelector("#pwd").classList.add("is-invalid");
-				isPwdValid=false;
-				return;// 함수를 여기서 끝내라 
-			}
 
 			//만일 비밀번호 입력란과 확인란이 다르다면
 			if (pwd != pwd2) {
-				document.querySelector("#pwd").classList.add("is-invalid");
-				isPwdValid=false;
+				$("#pwd").addClass("is-invalid");
+				isPwdValid=fasle;
 			} else {//같다면 
-				document.querySelector("#pwd").classList.add("is-valid");
+				$("#pwd").addClass("is-valid");
 				isPwdValid=true;
 			}
 		}
-
-		document.querySelector("#pwd").addEventListener("input", function() {
+		
+		//비밀번호를 입력할때마다 호출되는 함수 등록(다중 선택도 할 수 있다.)
+		$("#pwd, #pwd2").on("input",function(){
 			checkPwd();
 		});
-
-		//비밀번호를 입력할때마다 호출되는 함수 등록
-		document.querySelector("#pwd2").addEventListener("input", function() {
-			checkPwd();
-		});
-
-		
-		
-		
-		
-		
 		
 		//id를 입력할때마다 호출되는 함수 등록 
-		document.querySelector("#id").addEventListener("input", function() {
-			//input 요소의 참조값을 self에 미리 담아놓기
+		$("#id").on("input",function(){
 			const self = this;
-			//일단 2개의 클래스를 모두 제거한 다음
-			self.classList.remove("is-valid");
-			self.classList.remove("is-invalid");
+			//두개의 클래스 제거하기 
+			$(this).removeClass("is-valid is-invalid"); 
 			//1. 입력한 아이디를 읽어와서 
-			const inputId = this.value;
-			
-			//아이디를 검증할 정규 표현식===========================
-			const idReg = /^[a-z].{4,9}$/;
-			//입력한 아이디가 정규 표현식과 매칭이 되는지(통과되는지)
-			const isMatch = idReg.test(inputId); 
-			//만약 매칭되지 않는다면
-			if(!isMatch){
-				self.classList.add("is-invalid");
-				isIdValid=false;
-				return;//함수를 여기서 끝내라 
-			}
+			const inputId = $(self).val();
 			
 			//2. 서버에 페이지 전환없이 전송을하고 응답을 받는다. 
-			fetch("checkid.jsp?inputId=" + inputId)
-			.then(function(response) {
+			$.ajax({
+				url:"checkid.jsp?inputId=" + inputId,
+				success:function(data){ //해당 요청이 성공했을 때 사용되는 콜백함수 
+					//3. 사용가능한지 여부에 따라 아이디 입력란에 is-valid or is-invalid 클래스를 적절히 추가, 제거를 한다.
+					console.log(data);
+					if (data.isExist) {
+						$(self).addClass("is-invalid");
+						isIdValid=fasle;
+					} else {
+						$(self).addClass("is-valid");
+						isIdValid=true;
+
+					}
+				}
+			}) ;//jquery에서의 $는 함수이기도하고$(), 오브젝트$.이기도 하다. 
+			
+			<%--fetch("checkid.jsp?inputId=" + inputId).then(function(response) {
 				return response.json();
-			})
-			.then(function(data) {
+			}).then(function(data) {
 				//3. 사용가능한지 여부에 따라 아이디 입력란에 is-valid or is-invalid 클래스를 적절히 추가, 제거를 한다.
 				console.log(data);
 				if (data.isExist) {
-					self.classList.add("is-invalid");
-					isIdValid=false;
+					$(self).addClass("is-invalid");
+					isIdValid=fasle;
 				} else {
-					self.classList.add("is-valid");
+					$(self).addClass("is-valid");
 					isIdValid=true;
 
 				}
-			});
+			});--%>
+			
+			
 		});
 		
 		
 		
 		  //폼에 submit 이벤트가 일어 났을때 실행할 함수 등록
-	      document.querySelector("#signupForm").addEventListener("submit", function(event){   
+		  $("#signupForm").on("submit",function(){
 
-	         //아래의 코드는 아이디, 비밀번호, 이메일 유효성 검증결과를 고려해서 조건부로 실행되도록 해야 한다.
-	         //폼 전체의 유효성 여부
-	         const isFormValid = isIdValid && isPwdValid && isEmailValid;
-	         //만일 폼이 유효하지 않으면
-	         if(!isFormValid){
-	            event.preventDefault(); //폼 전송을 막는다.
-	         }
-	      });
-
-			
-			
+		         //아래의 코드는 아이디, 비밀번호, 이메일 유효성 검증결과를 고려해서 조건부로 실행되도록 해야 한다.
+		         //폼 전체의 유효성 여부
+		         const isFormValid = isIdValid && isPwdValid && isEmailValid;
+		         //만일 폼이 유효하지 않으면
+		         if(!isFormValid){
+		            return false //폼 전송을 막는다.
+		         }
+		  });
+		  
 	</script>
 
 
