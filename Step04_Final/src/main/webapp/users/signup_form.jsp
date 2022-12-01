@@ -139,7 +139,7 @@
 				document.querySelector("#pwd").classList.add("is-invalid");
 				isPwdValid=false;
 			} else {//같다면 
-				document.querySelector("#pwd").classList.add("is-valid");
+				document.querySelector("#pwd").classList.add("is-valid"ㅇㄹㅇㄹㅇㄹ);
 				isPwdValid=true;
 			}
 		}
