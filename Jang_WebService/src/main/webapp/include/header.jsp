@@ -28,6 +28,8 @@
 						<li class="nav-item"><a class="dropdown-item"
 							href="${pageContext.request.contextPath}/write/test.jsp">써보기</a></li>
 						<li class="nav-item"><a class="dropdown-item"
+							href="${pageContext.request.contextPath}/prop/board.jsp">건의 게시판</a></li>
+						<li class="nav-item"><a class="dropdown-item"
 							href="${pageContext.request.contextPath}/file/list.jsp">자료실</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
