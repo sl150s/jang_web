@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>component 테스트</h1>
-    <div id="app">
+    <div id="app"> <!-- root component  -->
         <fortune-component v-bind:fortune="'동쪽으로 가면 귀인을 만나요'"></fortune-component>
         <fortune-component v-bind:fortune="fortune"></fortune-component>
         <input type="text" v-model="fortune" >
@@ -31,9 +31,14 @@
                 <div>
                     <h2>오늘의 운세</h2>
                     <p>{{fortune}}</p>    
-                </div>  
+                </div>
             `,
             props:["fortune"]
+            /*자식 컴포먼트에서는 모델을 반드시 
+            	data(){
+            	return{}; 형식으로 사용해야한다 
+            }
+            */
         });
 
         let app=new Vue({
