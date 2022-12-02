@@ -11,6 +11,13 @@
     <div id="app">
         <my-component v-on:mom="feed"></my-component>
     </div>
+    <!-- 
+    	자식 컴포넌트인 my-component 에서 mom이라는 이벤트가 발생했을 때 feed라는 
+    	함수를 불러온다. 
+    	
+    	my-component 안에는 v-on:click="callMom"이 있는데 클릭 이벤트 발생시 
+    	CallMom 함수 불러준다. 
+     -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         Vue.component("my-component", {
@@ -24,6 +31,16 @@
                     // this.$emit("이벤트명", 전달할 data)
                     this.$emit("mom", "배고파");
                 }
+                /*
+                	callMom이라는 함수 호출되면서 $emit을 통해 
+                	부모 컴포넌트에 이벤트명 "mom"과 배고파 라는 데이터 전달
+                	
+                	부몬 컴포넌트는 mtethods: {
+                		
+                			
+                		}
+                	}
+                */
             }
         });
 

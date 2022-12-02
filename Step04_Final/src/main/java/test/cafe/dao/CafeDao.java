@@ -251,7 +251,8 @@ public class CafeDao {
 			conn = new DbcpBean().getConn();
 
 			// 실행할 sql문의 뼈대 구성하기
-			String sql = "INSERT INTO board_cafe" + " (num, writer,title,content,viewCount,regdate)"
+			String sql = "INSERT INTO board_cafe" + 
+					" (num, writer,title,content,viewCount,regdate)"
 					+ " VALUES(board_cafe_seq.NEXTVAL,?,?,?,0,SYSDATE)";
 
 			pstmt = conn.prepareStatement(sql);
