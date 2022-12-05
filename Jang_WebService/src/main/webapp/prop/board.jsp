@@ -87,18 +87,18 @@
 				<%--startPageNu,이 1이 아닌 경우에만 prev 링크를 제공한다 --%>
 				<%if(startPageNum != 1){ %>
 					<li class="page-item">
-						<a href="list.jsp?pageNum=<%=startPageNum-1%>" class="page-link">Prev</a>
+						<a href="board.jsp?pageNum=<%=startPageNum-1%>" class="page-link">Prev</a>
 					</li>
 				<%} %>
 				<%for(int i = startPageNum; i<=endPageNum; i++){ %>
 					<li class="page-item">
-						<a href="list.jsp?pageNum=<%=i%>" class="page-link <%=pageNum == i ? "active":""%>"><%=i %></a>
+						<a href="board.jsp?pageNum=<%=i%>" class="page-link <%=pageNum == i ? "active":""%>"><%=i %></a>
 					</li>
 				<%} %>
-				<%--마지막 페이지 번호가 전체 페이지의 갯수보다 작으면 Next 링크를 제고앟ㄴ다.  --%>
+				<%--마지막 페이지 번호가 전체 페이지의 갯수보다 작으면 Next 링크를 제공한다.  --%>
 				<%if(endPageNum < totalPageCount){ %>
 					<li class="page-item" >
-						<a href="list.jsp?pageNum=<%=endPageNum+1%>" class="page-link">Next</a>
+						<a href="board.jsp?pageNum=<%=endPageNum+1%>" class="page-link">Next</a>
 					</li>
 				<%} %>
 			</ul>

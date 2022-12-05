@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	
+	String id = (String)session.getAttribute("id");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
 		<form action="${pageContext.request.contextPath}/prop/private/insert.jsp" method="post">
 			<div>
 				<label for="writer">작성자</label>
-				<span>작성자이름</span>
+				<span><%=id %></span>
 			</div>
 			<div>
 				<label for="title">제목</label>

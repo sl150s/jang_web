@@ -39,7 +39,6 @@ public class PropoDao {
 			pstmt = conn.prepareStatement(sql);
 
 			//?에 바인딩 할게 있으면 한다. 
-
 			//Select문을 수행하고 결과값을 받아온다.
 			rs = pstmt.executeQuery();
 			//반복문 돌면서 ResultSet에서 필요한 값을 얻어낸다. 
@@ -78,7 +77,7 @@ public class PropoDao {
 		               + " FROM"
 		               + " (SELECT result1.*, ROWNUM AS rnum"
 		               + " FROM"
-		               + " (SELECT num, title, writer, TO_CHAR('regdate','yyy.mm.dd hh24:mi') redate, viewCount"
+		               + " (SELECT num, title, writer, TO_CHAR(regdate,'yyyy.mm.dd hh24:mi') AS regdate, viewCount"
 		               + " FROM board_prop"
 		               + " ORDER BY num DESC) result1)"
 		               + " WHERE rnum BETWEEN ?  AND ?";
@@ -97,6 +96,7 @@ public class PropoDao {
 				tmp.setTitle(rs.getString("title"));
 				tmp.setWriter(rs.getString("writer"));
 				tmp.setRegdate(rs.getString("regdate"));
+				tmp.setViewCount(rs.getInt("viewCount"));
 				list.add(tmp);
 			}
 		} catch (Exception e) {

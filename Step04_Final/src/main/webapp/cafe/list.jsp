@@ -48,6 +48,7 @@
 	
 	//CafeDto를 인자로 전달해서 글 목록 얻어오기 
 	List<CafeDto> list = CafeDao.getInstance().getList(dto);
+	
 
 		
 %>
