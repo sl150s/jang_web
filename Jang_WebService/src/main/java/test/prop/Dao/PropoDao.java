@@ -1,4 +1,4 @@
-package test.prop;
+package test.prop.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="test.prop.Dto.PropoDto"%>
-<%@page import="test.prop.PropoDao"%>
+<%@page import="test.prop.Dao.PropoDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
