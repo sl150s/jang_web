@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%
 	//sample 데이터
@@ -16,17 +17,15 @@
 	<h1>forTokens 활용</h1>
 	<h2>취미 목록</h2>
 	<ul>
-		<c:forTokens var="tmp" items="${hobby }" delims="/">
-			<li>${tmp }</li>
+		<c:forTokens var="ho" items="서울 / 대전" delims="/">
+			<li>${ho}</li>
 		</c:forTokens>
 	</ul>
 	<h2>친구 목록</h2>
 	<ul>
-		<c:forTokens var="tmp" items="${friends }" delims=",">
-			<li>${tmp }</li>
+		<c:forTokens var="tmp" items="${friends}" delims=",">
+			<li>${tmp}</li>
 		</c:forTokens>
 	</ul>
 </body>
 </html>
-
-

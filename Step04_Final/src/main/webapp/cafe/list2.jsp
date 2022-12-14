@@ -1,16 +1,15 @@
-<%@page import="test.file.dto.FileDto"%>
+<%@page import="test.cafe.dto.CafeDto"%>
 <%@page import="java.util.List"%>
-<%@page import="test.file.dao.FileDao"%>
+<%@page import="test.cafe.dao.CafeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-	//로그인된 아이디를 읽어온다.(로그인을 하지 않았으면 null이다)
-	String id = (String)session.getAttribute("id");
-
+	
 	//한 페이지에 몇개씩 표시할 것인지
 	final int PAGE_ROW_COUNT=5;
 	//하단 페이징 번호를를 몇 개(12345, 56789... )씩 표시할 것인지
-	final int PAGE_DISPLAY_COUNT=5;
+	final int PAGE_DISPLAY_COUNT=3;
 	//보여줄 페이지의 번호를 일단 1이라고 초기값 지정
 	int pageNum=1;
 	
@@ -32,17 +31,8 @@
 	//하단 끝 페이지 번호 
 	int endPageNum = startPageNum+PAGE_DISPLAY_COUNT-1;
 	
-	//FileDto 객체를 생성해서
-	FileDto dto = new FileDto();
-	//위에서 계산된 startRowNum, endRowNum을 담아서
-	dto.setStartRowNum(startRowNum);
-	dto.setEndRowNum(endRowNum);
-	
-	//파일 목록을 select 한다 
-	List<FileDto> list = FileDao.getInstance().getList(dto);
-	
 	//전체 글 갯수를 구해온다
-	int totalRow = FileDao.getInstance().getCount();
+	int totalRow = CafeDao.getInstance().getCount();
 	//전체 페이지의 갯수 구하기(총 글의 갯수가 10개, 한페이지에 3개씩 나타내기로했다면  4페이지까지 있는게 맞음.)
 	int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 	//.ceil은 천장을 의미(올림연산)하고 , .floor은 바닥(내림연산)을 의미한다. 
@@ -51,91 +41,119 @@
 	if(endPageNum > totalPageCount){
 		endPageNum=totalPageCount; //보정해준다.
 	}
+	//FileDto 객체를 생성해서
+	CafeDto dto = new CafeDto();
+	//위에서 계산된 startRowNum, endRowNum을 담아서
+	dto.setStartRowNum(startRowNum);
+	dto.setEndRowNum(endRowNum);
+	
+	//CafeDto를 인자로 전달해서 글 목록 얻어오기 
+	List<CafeDto> list = CafeDao.getInstance().getList(dto);
 	
 	
-	//응답하기
+	//JSTL + EL을 테스트 하기 위해서 필요한 값을 request 영역에 담기
+	//list라는 키값으로 request scope에 담기
+	request.setAttribute("list",list);
+	//페이징 처리에 필요한 값을 request scope에 담기
+	request.setAttribute("pageNum", pageNum);
+	request.setAttribute("startPageNum", startPageNum);
+	request.setAttribute("endPageNum", endPageNum);
+	request.setAttribute("totalPageCount", totalPageCount);
+		
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/file/list.jsp</title>
+<title>/cafe/list2.jsp</title>
 <jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
-	<%--페이지를 include시킬 때는 WEB-INF 폴더에 있는 페이지도 include 가능하다 --%>
 	<jsp:include page="/WEB-INF/include/navbar.jsp">
-		<jsp:param value="file" name="thisPage"></jsp:param>
+		<jsp:param value="cafe" name="thisPage"></jsp:param>
 	</jsp:include>
 	<%-- <jsp:include page="/include/header.jsp"></jsp:include>--%>
 	<div class="container">
-		<a href="${pageContext.request.contextPath}/file/private/upload_form.jsp" class="btn btn-dark">
-			업로드 하기
-		</a>
-		<h3>자료실 목록 보기</h3>
-		<table class="table table-striped">
-			<thead class="table-dark">
+		<a href="${pageContext.request.contextPath}/cafe/private/insertform.jsp">새 글 작성</a>
+		<h3>문의 게시판</h3>
+		<table class="table">
+			<thead>
 				<tr>
-					<th>번호</th>
+					<th>글번호</th>
 					<th>작성자</th>
 					<th>제목</th>
-					<th>파일명</th>
-					<th>크기</th>
-					<th>등록일</th>
-					<th>삭제</th>
+					<th>조회수</th>
+					<th>작성일</th>
 				</tr>
 			</thead>
-			<tbody>
-				<%for(FileDto tmp:list){ %>
+			<tbody class="table-group-divider">
+				<%--<%for(CafeDto tmp:list){ 
+				<tr>
+					<td><%=tmp.getNum() %></td>
+					<td><%=tmp.getWriter() %></td>
+					<td>
+						<a href="detail.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a>
+					</td>
+					<td><%=tmp.getViewCount() %></td>
+					<td><%=tmp.getRegdate() %></td>
+				</tr>
+				<%} %>--%>
+				<c:forEach var="tmp" items="${list}">
 					<tr>
-						<td><%=tmp.getNum() %> </td>
-						<td><%=tmp.getWriter() %> </td>
-						<td><%=tmp.getTitle() %> </td>
+						<td>${tmp.num }</td>
+						<td>${tmp.writer }</td>
 						<td>
-							<a href="download.jsp?num=<%=tmp.getNum() %>"><%=tmp.getOrgFileName()%> </a>
+							<a href="detail.jsp?num=${tmp.num}">${tmp.title}</a>
 						</td>
-						<td><%=tmp.getFileSize()%> </td>
-						<td><%=tmp.getRegdate()%></td>
-						<td>
-							<!-- 글 작성자가 로그인된 아이디와 같을 때만 삭제 링크가 제공한다.  -->
-							<%if(tmp.getWriter().equals(id)){%>
-								<a href="javascript:deleteConfirm(<%=tmp.getNum() %>)">삭제</a>
-							<% }%>
-						</td>
+						<td>${tmp.viewCount }</td>
+						<td>${tmp.regdate }</td>
 					</tr>
-				<%} %>
+				</c:forEach>
+				
 			</tbody>
 		</table>
-		
 		<nav>
 			<ul class="pagination">
 				<%--startPageNu,이 1이 아닌 경우에만 prev 링크를 제공한다 --%>
-				<%if(startPageNum != 1){ %>
+				<%--<%if(startPageNum != 1){ 
 					<li class="page-item">
 						<a href="list.jsp?pageNum=<%=startPageNum-1%>" class="page-link">Prev</a>
 					</li>
-				<%} %>
-				<%for(int i = startPageNum; i<=endPageNum; i++){ %>
+				<%} %>--%>
+				<c:if test="${startPageNum ne 1 }">
+					<li class="page-item">
+						<a href="list.jsp?pageNum= ${startPageNum-1}" class="page-link">Prev</a>
+					</li>
+				</c:if>
+				
+				<%--<%for(int i = startPageNum; i<=endPageNum; i++){ 
 					<li class="page-item">
 						<a href="list.jsp?pageNum=<%=i%>" class="page-link <%=pageNum == i ? "active":""%>"><%=i %></a>
 					</li>
-				<%} %>
+				<%} %>--%>
+				<c:forEach var="tmp" begin="${startPageNum}" end="${endPageNum}"  >
+					<li class="page-item">
+						<a href="list.jsp?pageNum=${tmp}" class="page-link ${ pageNum == tmp ? 'active':''} " >
+							${tmp}
+						</a>
+					</li>
+				</c:forEach>
+				
 				<%--마지막 페이지 번호가 전체 페이지의 갯수보다 작으면 Next 링크를 제고앟ㄴ다.  --%>
-				<%if(endPageNum < totalPageCount){ %>
+				<%--<%if(endPageNum < totalPageCount){ 
 					<li class="page-item" >
 						<a href="list.jsp?pageNum=<%=endPageNum+1%>" class="page-link">Next</a>
 					</li>
-				<%} %>
+				<%} %>--%>
+				<c:if test="${endPageNum lt totalPageCount }">
+					<li class="page-item">
+						<a href="list.jsp?pageNum= ${endPageNum+1} " class="page-link">Prev</a>
+					</li>
+				</c:if>
+				
+				
 			</ul>
 		</nav>
 	</div>
-	<script>
-		function deleteConfirm(num){
-			let isDelete = confirm("삭제하시겠습니까?");
-			if(isDelete){
-				location.href="delete.jsp?num="+num;
-			}
-		}
-	</script>
 </body>
 </html>

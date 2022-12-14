@@ -53,65 +53,20 @@
 		
 %>
 
+[
+<% for(int i=0; i<list.size(); i++){
+	CafeDto tmp = list.get(i);%>
+	
+	{
+		"num":<%=tmp.getNum() %>,
+		"writer":"<%=tmp.getWriter() %>",
+		"Title":"<%=tmp.getTitle() %>",
+		"viewCount":<%=tmp.getViewCount() %>,
+		"regdate":"<%=tmp.getRegdate() %>"
+	}
+	<% if(i != list.size()-1) { %> <%-- 배열의 마지막 인덱스만 아니면 ,찍기 --%>
+		,
+	<%} %>
+<%} %>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>/cafe/list.jsp</title>
-<jsp:include page="/include/boot.jsp"></jsp:include>
-</head>
-<body>
-	<jsp:include page="/include/header.jsp"></jsp:include>
-	<div class="container">
-		<a href="${pageContext.request.contextPath}/cafe/private/insertform.jsp">새 글 작성</a>
-		<h3>문의 게시판</h3>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>글번호</th>
-					<th>작성자</th>
-					<th>제목</th>
-					<th>조회수</th>
-					<th>작성일</th>
-				</tr>
-			</thead>
-			<tbody class="table-group-divider">
-				<%for(CafeDto tmp:list){ %>
-				<tr>
-					<td><%=tmp.getNum() %></td>
-					<td><%=tmp.getWriter() %></td>
-					<td>
-						<a href="detail.jsp?num=<%=tmp.getNum()%>"><%=tmp.getTitle() %></a>
-					</td>
-					<td><%=tmp.getViewCount() %></td>
-					<td><%=tmp.getRegdate() %></td>
-				</tr>
-				<%} %>
-			</tbody>
-		</table>
-		<nav>
-			<ul class="pagination">
-				<%--startPageNu,이 1이 아닌 경우에만 prev 링크를 제공한다 --%>
-				<%if(startPageNum != 1){ %>
-					<li class="page-item">
-						<a href="list.jsp?pageNum=<%=startPageNum-1%>" class="page-link">Prev</a>
-					</li>
-				<%} %>
-				<%for(int i = startPageNum; i<=endPageNum; i++){ %>
-					<li class="page-item">
-						<a href="list.jsp?pageNum=<%=i%>" class="page-link <%=pageNum == i ? "active":""%>"><%=i %></a>
-					</li>
-				<%} %>
-				<%--마지막 페이지 번호가 전체 페이지의 갯수보다 작으면 Next 링크를 제고앟ㄴ다.  --%>
-				<%if(endPageNum < totalPageCount){ %>
-					<li class="page-item" >
-						<a href="list.jsp?pageNum=<%=endPageNum+1%>" class="page-link">Next</a>
-					</li>
-				<%} %>
-			</ul>
-		</nav>
-	</div>
-</body>
-</html>
+]

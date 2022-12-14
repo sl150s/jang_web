@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	//session scope에 id라는 키값으로 저장된 값이 있는지 읽어와 본다(없으면 null)
 	String id = (String)session.getAttribute("id");
@@ -29,6 +30,8 @@
 							href="${pageContext.request.contextPath}/cafe/list.jsp">문의게시판</a></li>
 						<li class="nav-item"><a class="dropdown-item"
 							href="${pageContext.request.contextPath}/file/list.jsp">자료실</a></li>
+							<li class="nav-item"><a class="dropdown-item"
+							href="${pageContext.request.contextPath}/my_app">React 테스트</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false"> 회원전용공간 </a>
@@ -46,7 +49,9 @@
 						<button class="btn btn-success" type="submit">Search</button>
 					</form>
 					<div class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-3">
-						<%if (id != null) {%>
+						<%--
+							if문으로 작성 ==================================== 
+						<%if (id != null) {
 						<p class="nav-item">
 							<a class="dropdown-item"
 								href="${pageContext.request.contextPath}/users/private/info.jsp"><%=id%>님,
@@ -60,7 +65,37 @@
 							<a class="dropdown-item"
 								href="${pageContext.request.contextPath }/users/signup_form.jsp">회원가입</a>
 						</p>
-						<%}%>
+						<%}%>--%>
+						
+						
+						
+						<%--
+							1. sessionScope.id != null
+							2. id != null
+							3. id ne null
+							4. not empty id
+							
+							el 에서 1,2,3,4는 모두 같은 결과이다. 
+						 --%>
+						<c:choose>
+							<c:when test="${not empty id }">
+								<p class="nav-item">
+									<a class="dropdown-item"
+										href="${pageContext.request.contextPath}/users/private/info.jsp">${id}님,
+										환영합니다!</a> <a class="dropdown-item mt-1"
+										href="${pageContext.request.contextPath}/users/logout.jsp">로그아웃</a>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="nav-item">
+									<a class="dropdown-item"
+										href="${pageContext.request.contextPath}/users/loginform.jsp">로그인</a>
+									<a class="dropdown-item"
+										href="${pageContext.request.contextPath }/users/signup_form.jsp">회원가입</a>
+								</p>
+							</c:otherwise>
+						</c:choose>
+						
 					</div>
 				</div>
 			</div>

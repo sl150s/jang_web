@@ -21,6 +21,7 @@
 	<c:if test="${fn:contains(msg,'구라') }">
 		<p>메세지에 "구라" 가 포함되어 있군요!</p>
 	</c:if>
+	
 	<p>${str }</p>
 	<p>${fn:escapeXml(str) }</p>
 	<p>${content }</p>
@@ -28,6 +29,8 @@
 	<p>${fn:replace(content, newLine, '<br>') }</p>
 </body>
 </html>
+
+
 
 
 

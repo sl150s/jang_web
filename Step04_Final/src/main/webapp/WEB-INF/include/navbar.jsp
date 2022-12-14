@@ -18,13 +18,24 @@
 	          			<a class="nav-link ${param.thisPage eq 'file' ? 'active' : '' }" href="${pageContext.request.contextPath}/file/list.jsp">자료실</a>
 	        		</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link ${param.thisPage eq 'cafe' ? 'active' : '' }" href="${pageContext.request.contextPath}/cafe/list.jsp">카페</a>
+	          			<a class="nav-link ${param.thisPage eq 'cafe' ? 'active' : '' }" href="${pageContext.request.contextPath}/cafe/list2.jsp">카페</a>
+	        		</li>
+	        		<li class="nav-item">
+	          			<a class="nav-link ${param.thisPage eq 'cafe' ? 'active' : '' }" href="${pageContext.request.contextPath}/my_app/gura.jsp">react 테스트</a>
 	        		</li>
 	     			<li class="nav-item">
 	          			<a class="nav-link ${param.thisPage eq 'gallery' ? 'active' : '' }" href="${pageContext.request.contextPath}/gallery/list.jsp">겔러리</a>
 	        		</li>
       			</ul>
       			<%--session 영역에 만일 id가 비어있으면(로그인을 하지 않았으면) --%>
+    			<%--
+					1. sessionScope.id != null
+					2. id != null
+					3. id ne null
+					4. not empty id
+					
+					el 에서 1,2,3,4는 모두 같은 결과이다. 
+				 --%>
       			<c:choose>
       				<c:when test="${empty id }">
 	      				<a class="btn btn-outline-primary btn-sm me-2" href="${pageContext.request.contextPath}/users/signup_form.jsp">회원가입</a>

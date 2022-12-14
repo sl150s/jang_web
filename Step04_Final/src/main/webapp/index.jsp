@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +9,8 @@
 <jsp:include page="/include/boot.jsp"></jsp:include>
 </head>
 <body>
-	<jsp:include page="/include/header.jsp"></jsp:include>
-
+	<%-- <jsp:include page="/include/header.jsp"></jsp:include> --%>
+	<jsp:include page="/WEB-INF/include/navbar.jsp"/>
 
 	<div class="visual container-fluid">
 		<div id="carouselExampleControlsNoTouching" class="carousel slide"
